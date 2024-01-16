@@ -10,7 +10,7 @@ public class MinionStateManager : MonoBehaviour
     public MinionChaseState chaseState = new MinionChaseState();
 
     void OnCollisionEnter(Collision collision) {
-        currentState.OnCollisionEnter(this, collision);
+        currentState.OnCollisionEnter(collision);
     }
     void Start()
     {

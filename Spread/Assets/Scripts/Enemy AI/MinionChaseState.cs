@@ -9,7 +9,7 @@ public class MinionChaseState : MinionBaseState
 
     }
 
-    public override void OnCollisionEnter(MinionStateManager minion) {
-
+    public override void OnCollisionEnter(Collision collision) {
+        
     }
 }

@@ -4,7 +4,7 @@ using System;
 
 public abstract class BaseStateManager<EState> : MonoBehaviour where EState : Enum
 {
-    Dictionary<EState, BaseState<EState>> States = new Dictionary<EState, BaseState<EState>>();
+    protected Dictionary<EState, BaseState<EState>> States = new Dictionary<EState, BaseState<EState>>();
     protected BaseState<EState> CurrentState;
 
     protected bool IsTransitiongState = false;

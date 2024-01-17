@@ -17,7 +17,7 @@ public class MinionStateMachine : BaseStateManager<MinionStateMachine.EMinionSta
     // public Dictionary<EMinionState, MinionStateMachine> States { get; } = new Dictionary<EMinionState, MinionStateMachine>();
 
     void Awake() {
-        // CurrentState = States[EMinionState.Idle];
-
+        CurrentState = States[EMinionState.Idle];
+        
     }
 }

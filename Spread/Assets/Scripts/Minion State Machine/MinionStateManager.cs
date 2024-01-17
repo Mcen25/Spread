@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MinionStateManager : MonoBehaviour
 {
@@ -10,10 +11,15 @@ public class MinionStateManager : MonoBehaviour
     public MinionAttackState AttackState = new MinionAttackState();
     public MinionConsumeState ConsumeState = new MinionConsumeState();
     
-    void OnCollisionEnter(Collision collision) {
-        currentState.OnCollisionEnter(this);
+    public GameObject[] targets;
+    public NavMeshAgent agent;
+    
+    public Animator animator;
+    void Awake() {
+        animator = GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
+        targets = GameObject.FindGameObjectsWithTag("Food");
     }
-
     void Start() {
         currentState = IdleState;
 

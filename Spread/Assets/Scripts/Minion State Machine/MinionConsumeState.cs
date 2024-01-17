@@ -14,7 +14,7 @@ public class MinionConsumeState : MinionBaseState
         throw new System.NotImplementedException();
     }
 
-    public override void OnCollisionEnter(MinionStateManager minion)
+    public override void OnCollisionEnter(Collision collision, MinionStateManager minion)
     {
         throw new System.NotImplementedException();
     }

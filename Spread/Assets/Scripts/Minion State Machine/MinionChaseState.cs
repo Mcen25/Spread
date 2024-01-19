@@ -12,22 +12,17 @@ public class MinionChaseState : MinionBaseState
         {
             Debug.Log("Animator is null");
         }
+        minion.audioSource.clip = minion.audioClips[0];
+        minion.audioSource.Play();
+        minion.animator.SetBool("isWalking", true);
+        minion.agent.SetDestination(minion.targets[0].transform.position);
     }
 
     public override void UpdateState(MinionStateManager minion)
     {
-        if (minion.targets == null)
-        {
-            minion.animator.SetBool("isWalking", false);
-            minion.SwitchState(minion.IdleState);
-        }
-        else
-        {
-            minion.animator.SetBool("isWalking", true);
-            minion.agent.SetDestination(minion.targets[0].transform.position);
-        }
 
         if (Vector3.Distance(minion.targets[0].transform.position, minion.transform.position) < distance) {
+            minion.audioSource.Stop();
             minion.SwitchState(minion.ConsumeState);
         }
     }

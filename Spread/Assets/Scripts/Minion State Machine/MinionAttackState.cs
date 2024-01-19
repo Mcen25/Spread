@@ -12,7 +12,7 @@ public class MinionAttackState : MinionBaseState
         Debug.Log("Updating Attack State");
     }
 
-    public override void OnCollisionEnter(Collision collision, MinionStateManager minion) {
+    public override void OnCollisionEnter(MinionStateManager minion, Collision collision) {
         Debug.Log("Colliding in Attack State");
     }
 }

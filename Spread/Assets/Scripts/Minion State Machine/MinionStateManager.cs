@@ -30,9 +30,9 @@ public class MinionStateManager : MonoBehaviour
         currentState.UpdateState(this);
     }
 
-    // void OnCollisionEnter(Collision collision) {
-    //     currentState.OnCollisionEnter(collision, this);
-    // }
+    void OnCollisionEnter(Collision collision) {
+        currentState.OnCollisionEnter(this, collision);
+    }
 
     public void SwitchState(MinionBaseState state) {
         currentState = state;

@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class MinionConsumeState : MinionBaseState
 {
+
+    [SerializeField] private float distance = 100.0f;
     public override void EnterState(MinionStateManager minion)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Entering Consume State");
+        minion.agent.SetDestination(minion.transform.position);
+        minion.animator.SetBool("isWalking", false);
+        minion.animator.SetBool("IsEating", true);
     }
 
     public override void UpdateState(MinionStateManager minion)
     {
-        throw new System.NotImplementedException();
+
     }
 
-    public override void OnCollisionEnter(Collision collision, MinionStateManager minion)
+    public override void OnCollisionEnter(MinionStateManager minion, Collision collision)
     {
-        throw new System.NotImplementedException();
+        
     }
 }

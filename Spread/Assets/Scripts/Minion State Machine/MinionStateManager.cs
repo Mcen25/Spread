@@ -14,8 +14,10 @@ public class MinionStateManager : MonoBehaviour
     // public Collision collision;
     public GameObject[] targets;
     public NavMeshAgent agent;
+
     public AudioSource audioSource;
     public AudioClip[] audioClips;
+
     public Animator animator;
     void Awake() {
         animator = GetComponent<Animator>();

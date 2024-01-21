@@ -17,26 +17,33 @@ public class Shotgun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ammo == 0) {
-            animator.SetBool("StayBack", true);
-        }
-        if (Input.GetButtonDown("Fire1") && ammo > 0) {
+
+        if (Input.GetButtonDown("Fire1") && ammo > 1) {
             Debug.Log("Shoot");
             animator.SetBool("Shoot", true);
             Debug.Log(ammo);
         } 
+        
+        if (Input.GetButtonDown("Fire1") && ammo == 1) {
+            Debug.Log("Last Shot");
+            animator.SetBool("LastShot", true);
+            animator.SetBool("StayBack", true);
+        }
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-          if (ammo == 4) {
-            animator.SetBool("ReloadLastShot", true);
-            ammo++;
-          } else if (ammo < 4) {
-            while (ammo < 4) {
-                animator.SetBool("Reload", true);
-                ammo++;
+            if (ammo != 5) {
+                animator.SetBool("StayBack", false);
+                if (ammo == 4) {
+                    animator.SetBool("ReloadLastShot", true);
+                    ammo++;
+                } else if (ammo < 4) {
+                    while (ammo < 4) {
+                        animator.SetBool("Reload", true);
+                        
+                    }
+                }
             }
-          }
         }    
     }
 
@@ -44,11 +51,17 @@ public class Shotgun : MonoBehaviour
     {
         animator.SetBool("Reload", false);
         animator.SetBool("ReloadLastShot", false);
-        animator.SetBool("LastShot", false);
+        ammo++;
     }
 
     public void EndShootAnimation() {
         animator.SetBool("Shoot", false);
+        ammo--;
+    }
+
+    public void EndLastShotAnimation() {
+        animator.SetBool("LastShot", false);
+        animator.SetBool("StayBack", true);
         ammo--;
     }
 

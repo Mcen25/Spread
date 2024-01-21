@@ -11,7 +11,7 @@ public class MinionConsumeState : MinionBaseState
         Debug.Log("Entering Consume State");
         minion.agent.SetDestination(minion.transform.position);
         minion.animator.SetBool("isWalking", false);
-        minion.animator.SetBool("IsEating", true);
+        minion.animator.SetBool("isEating", true);
     }
 
     public override void UpdateState(MinionStateManager minion)

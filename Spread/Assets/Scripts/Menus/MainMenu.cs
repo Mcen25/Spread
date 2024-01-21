@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] audioClips;
+
     public void PlayGame()
     {
         // Load the next scene in the build index
@@ -18,15 +21,17 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Quit");
         Application.Quit();
     }
-    // Start is called before the first frame update
-    void Start()
+
+    public void PlayHoverSound()
     {
-        
+        Debug.Log("Hovering and played sound");
+        audioSource.clip = audioClips[0];
+        audioSource.Play();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayerClickSound()
     {
-        
+        audioSource.clip = audioClips[1];
+        audioSource.Play();
     }
 }

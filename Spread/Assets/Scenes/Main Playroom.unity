@@ -1456,7 +1456,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8794199846178625511}
-  audioClips: []
+  audioClips:
+  - {fileID: 8300000, guid: e5de6b31903544c818bf324f642e89c4, type: 3}
   audioSource: {fileID: 8794199846178625512}
   fpsCam: {fileID: 3617993714717263132}
 --- !u!114 &9050864656655152653

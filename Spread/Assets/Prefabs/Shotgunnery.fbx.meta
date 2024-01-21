@@ -3,6 +3,7 @@ guid: 84ecb84cfb2674f7f800244b815b82f2
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
+<<<<<<< Updated upstream
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -24,6 +25,9 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: standardSurface1
     second: {fileID: 2100000, guid: e30366d67ffa74648a98b370a0504de3, type: 2}
+=======
+  externalObjects: {}
+>>>>>>> Stashed changes
   materials:
     materialImportMode: 2
     materialName: 0

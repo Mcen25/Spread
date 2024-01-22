@@ -11,12 +11,14 @@ public class MinionConsumeState : MinionBaseState
         Debug.Log("Entering Consume State");
         minion.agent.SetDestination(minion.transform.position);
         minion.animator.SetBool("isWalking", false);
-        minion.animator.SetBool("isEating", true);
+        minion.animator.SetBool("IsEating", true);
+        GameObject food = minion.targets[0];
+        food.SetActive(false);
     }
 
     public override void UpdateState(MinionStateManager minion)
     {
-
+        
     }
 
     public override void OnCollisionEnter(MinionStateManager minion, Collision collision)

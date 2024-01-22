@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class PickUpController : MonoBehaviour
 {
-    public RigidBoy rb;
+    public Rigidbody rb;
     public BoxCollider coll;
 }

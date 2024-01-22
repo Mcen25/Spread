@@ -19,9 +19,7 @@ public class MinionConsumeState : MinionBaseState
 
     public override void UpdateState(MinionStateManager minion)
     {
-        if (minion.targets[0].activeSelf == false) {
-            minion.SwitchState(minion.IdleState);
-        }
+
     }
 
     public override void OnCollisionEnter(MinionStateManager minion, Collision collision)
@@ -33,6 +31,26 @@ public class MinionConsumeState : MinionBaseState
     {
         Debug.Log("Waiting to deactivate food");
         yield return new WaitForSeconds(15f);
-        minion.targets[0].SetActive(false);
+        GameObject closestFood = FindClosestTarget(minion);
+        closestFood.SetActive(false);
+        minion.SwitchState(minion.IdleState);
+    }
+
+    private GameObject FindClosestTarget(MinionStateManager minion) {
+        GameObject[] targets = GameObject.FindGameObjectsWithTag("Food");
+        GameObject closestTarget = null;
+        float closestDistance = Mathf.Infinity;
+
+        foreach (GameObject target in targets)
+        {
+            float distanceToTarget = Vector3.Distance(target.transform.position, minion.transform.position);
+            if (distanceToTarget < closestDistance)
+            {
+                closestDistance = distanceToTarget;
+                closestTarget = target;
+            }
+        }
+
+        return closestTarget;
     }
 }

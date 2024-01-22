@@ -12,13 +12,20 @@ public class MinionChaseState : MinionBaseState
         minion.audioSource.clip = minion.audioClips[0];
         minion.audioSource.Play();
         minion.animator.SetBool("isWalking", true);
-        minion.agent.SetDestination(minion.targets[0].transform.position);
+       
+        GameObject closestTarget = FindClosestTarget(minion);
+        if (closestTarget != null)
+        {
+            minion.agent.SetDestination(closestTarget.transform.position);
+        }
     }
 
     public override void UpdateState(MinionStateManager minion)
     {
 
-        if (Vector3.Distance(minion.targets[0].transform.position, minion.transform.position) < distance) {
+        GameObject closestTarget = FindClosestTarget(minion);
+        if (closestTarget != null && Vector3.Distance(closestTarget.transform.position, minion.transform.position) < distance)
+        {
             minion.audioSource.Stop();
             minion.SwitchState(minion.ConsumeState);
         }
@@ -30,7 +37,7 @@ public class MinionChaseState : MinionBaseState
     }
 
     private GameObject FindClosestTarget(MinionStateManager minion) {
-        GameObject[] targets = GameObject.FindGameObjectsWithTag("Target");
+        GameObject[] targets = GameObject.FindGameObjectsWithTag("Food");
         GameObject closestTarget = null;
         float closestDistance = Mathf.Infinity;
 

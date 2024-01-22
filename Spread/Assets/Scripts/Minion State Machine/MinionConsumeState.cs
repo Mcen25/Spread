@@ -33,7 +33,9 @@ public class MinionConsumeState : MinionBaseState
         yield return new WaitForSeconds(15f);
         GameObject closestFood = FindClosestTarget(minion);
         closestFood.SetActive(false);
+        minion.animator.SetBool("isEating", false);
         minion.SwitchState(minion.IdleState);
+
     }
 
     private GameObject FindClosestTarget(MinionStateManager minion) {

@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class MinionStateManager : MonoBehaviour
 {
-    MinionBaseState currentState;
+    public MinionBaseState currentState;
     public MinionIdleState IdleState = new MinionIdleState();
     public MinionChaseState ChaseState = new MinionChaseState();
     public MinionAttackState AttackState = new MinionAttackState();
@@ -45,10 +45,12 @@ public class MinionStateManager : MonoBehaviour
         currentState.EnterState(this);
     }
 
-    public void IsEnemyClose(MinionStateManager minion, GameObject player) {
+    public bool IsEnemyClose(MinionStateManager minion, GameObject player) {
         if (Vector3.Distance(minion.transform.position, minion.player.transform.position) < 4.0f) {
-            SwitchState(AttackState);
+            return true;
         }
+
+        return false;
     }
 
     public bool CheckFoodActivity() {

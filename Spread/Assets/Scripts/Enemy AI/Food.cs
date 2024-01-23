@@ -7,6 +7,8 @@ public class Food : MonoBehaviour
     private GameObject foodObject;
     public int foodvalue = 100;
 
+    public GameObject[] doors; // Array of doors that has access to the food
+
     void Awake() {
         foodObject = GetComponent<GameObject>();
     }
@@ -28,5 +30,16 @@ public class Food : MonoBehaviour
 
     public void KillFood() {
         Destroy(foodObject);
+    }
+
+    public bool RoomAccess() {
+        foreach (GameObject door in doors)
+        {
+            if (door.activeSelf == true) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

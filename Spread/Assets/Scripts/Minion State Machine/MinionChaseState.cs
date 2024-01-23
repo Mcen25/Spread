@@ -23,12 +23,18 @@ public class MinionChaseState : MinionBaseState
     public override void UpdateState(MinionStateManager minion)
     {
 
-        GameObject closestTarget = FindClosestTarget(minion);
-        if (closestTarget != null && Vector3.Distance(closestTarget.transform.position, minion.transform.position) < distance)
-        {
-            minion.audioSource.Stop();
-            minion.SwitchState(minion.ConsumeState);
+        if (minion.IsEnemyClose(minion, minion.player)) {
+            minion.SwitchState(minion.AttackState);
+        } else {
+            GameObject closestTarget = FindClosestTarget(minion);
+            if (closestTarget != null && Vector3.Distance(closestTarget.transform.position, minion.transform.position) < distance)
+            {
+                minion.audioSource.Stop();
+                minion.SwitchState(minion.ConsumeState);
+            }    
         }
+        
+         
     }
 
     public override void OnCollisionEnter(MinionStateManager minion, Collision collision)

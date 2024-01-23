@@ -19,7 +19,9 @@ public class MinionConsumeState : MinionBaseState
 
     public override void UpdateState(MinionStateManager minion)
     {
-
+        if (minion.IsEnemyClose(minion, minion.player)) {
+            minion.SwitchState(minion.AttackState);
+        }
     }
 
     public override void OnCollisionEnter(MinionStateManager minion, Collision collision)

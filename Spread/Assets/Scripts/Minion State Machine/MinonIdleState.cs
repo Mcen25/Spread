@@ -12,11 +12,13 @@ public class MinionIdleState : MinionBaseState
 
     public override void UpdateState(MinionStateManager minion)
     {
-        if (CheckFoodActivity() != false) {
+        if (minion.CheckFoodActivity() != false) {
             minion.SwitchState(minion.ChaseState);
         } else {
             minion.animator.SetBool("isWalking", false);
         }
+
+        minion.IsEnemyClose(minion, minion.player);
     }
 
     public override void OnCollisionEnter(MinionStateManager minion, Collision collision)
@@ -24,14 +26,4 @@ public class MinionIdleState : MinionBaseState
 
     }
 
-    private bool CheckFoodActivity() {
-        GameObject[] targets = GameObject.FindGameObjectsWithTag("Food");
-        foreach (GameObject target in targets)
-        {
-            if (target.activeSelf) {
-                return true;
-            }
-        }
-        return false;
-    }
 }

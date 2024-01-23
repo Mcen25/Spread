@@ -18,6 +18,8 @@ public class MinionStateManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip[] audioClips;
 
+    public GameObject player;
+
     public Animator animator;
     void Awake() {
         animator = GetComponent<Animator>();
@@ -41,5 +43,22 @@ public class MinionStateManager : MonoBehaviour
     public void SwitchState(MinionBaseState state) {
         currentState = state;
         currentState.EnterState(this);
+    }
+
+    public void IsEnemyClose(MinionStateManager minion, GameObject player) {
+        if (Vector3.Distance(minion.transform.position, minion.player.transform.position) < 4.0f) {
+            SwitchState(AttackState);
+        }
+    }
+
+    public bool CheckFoodActivity() {
+        GameObject[] foods = GameObject.FindGameObjectsWithTag("Food");
+        foreach (GameObject food in foods)
+        {
+            if (food.activeSelf) {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -12,6 +12,9 @@ public class Shotgun : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Camera fpsCam;
 
+    public float damage = 10f;
+    public float range = 100f;
+
     void Start()
     {
         
@@ -74,6 +77,13 @@ public class Shotgun : MonoBehaviour
     public void PlayShotAudio() {
         audioSource.clip = audioClips[0];
         audioSource.Play();
+    }
+
+    private void Shoot() {
+        RaycastHit hit;
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range)) {
+            Debug.Log(hit.transform.name);
+        }
     }
 
 }

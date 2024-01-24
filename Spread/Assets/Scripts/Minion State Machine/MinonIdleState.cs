@@ -16,8 +16,8 @@ public class MinionIdleState : MinionBaseState
             minion.SwitchState(minion.AttackState);
         } else if (minion.CheckFoodActivity() != false) {
             minion.SwitchState(minion.ChaseState);
-        } else {
-            minion.animator.SetBool("isWalking", false);
+        } else if (minion.CheckFoodActivity() == false) {
+
         }
 
     }

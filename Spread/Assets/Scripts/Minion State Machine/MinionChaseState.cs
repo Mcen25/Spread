@@ -11,7 +11,7 @@ public class MinionChaseState : MinionBaseState
 
         minion.audioSource.clip = minion.audioClips[0];
         minion.audioSource.Play();
-        minion.animator.SetBool("isWalking", true);
+        minion.animator.SetBool("IsWalking", true);
        
         GameObject closestTarget = FindClosestTarget(minion);
         if (closestTarget != null)

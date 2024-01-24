@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,6 +12,9 @@ public class MinionStateManager : MonoBehaviour
     public MinionAttackState AttackState = new MinionAttackState();
     public MinionConsumeState ConsumeState = new MinionConsumeState();
     public MinionSplitState SplitState = new MinionSplitState();
+    public MinionSourceState sourceState = new MinionSourceState();
+
+    public MinionCombineState CombineState = new MinionCombineState();
     
     // public Collision collision;
     public GameObject[] targets;
@@ -23,6 +27,9 @@ public class MinionStateManager : MonoBehaviour
     public GameObject clone;
 
     public Animator animator;
+
+    public GameObject sourcePoint;
+
     void Awake() {
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();

@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
         if (health <= 0) {
             Debug.Log("Player killed");
             canvas.enabled = true;
-            minion.animator.SetBool("isAttacking", false);
+            minion.animator.SetBool("Attacking", false);
         }
     }
 }

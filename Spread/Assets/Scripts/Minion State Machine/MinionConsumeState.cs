@@ -11,8 +11,8 @@ public class MinionConsumeState : MinionBaseState
     {
         Debug.Log("Entering Consume State");
         minion.agent.SetDestination(minion.transform.position);
-        minion.animator.SetBool("isWalking", false);
-        minion.animator.SetBool("isEating", true);
+        minion.animator.SetBool("IsWalking", false);
+        minion.animator.SetBool("IsEating", true);
 
         if (minion.IsEnemyClose(minion, minion.player)) {
             minion.SwitchState(minion.AttackState);
@@ -36,10 +36,11 @@ public class MinionConsumeState : MinionBaseState
     private IEnumerator DeactivateFoodAfterDelay(MinionStateManager minion)
     {
         Debug.Log("Waiting to deactivate food");
-        yield return new WaitForSeconds(15f);
         GameObject closestFood = FindClosestTarget(minion);
+        yield return new WaitForSeconds(15f);
+        
         closestFood.SetActive(false);
-        minion.animator.SetBool("isEating", false);
+        minion.animator.SetBool("IsEating", false);
         minion.SwitchState(minion.SplitState);
 
     }

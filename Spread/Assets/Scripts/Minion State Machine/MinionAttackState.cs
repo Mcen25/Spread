@@ -8,9 +8,9 @@ public class MinionAttackState : MinionBaseState
 
     public override void EnterState(MinionStateManager minion) {
         Debug.Log("Entering Attack State");
-        minion.animator.SetBool("isWalking", false);     
+        minion.animator.SetBool("IsWalking", false);     
         minion.animator.SetBool("CanAttack", true);
-        minion.animator.SetBool("isEating", false);
+        minion.animator.SetBool("IsEating", false);
 
         minion.agent.speed = agentSpeed;
 
@@ -21,7 +21,7 @@ public class MinionAttackState : MinionBaseState
         if (WithinRange(minion)) {
             AttackPlayer(minion);
         } else {
-            minion.agent.SetDestination(minion.player.transform.position);
+            minion.SwitchState(minion.IdleState);
         }
     }
 
@@ -30,7 +30,7 @@ public class MinionAttackState : MinionBaseState
     }
 
     private bool WithinRange(MinionStateManager minion) {
-        if (Vector3.Distance(minion.player.transform.position, minion.transform.position) <= 6.0f) {
+        if (Vector3.Distance(minion.player.transform.position, minion.transform.position) <= 7.0f) {
             return true;
         } else {
             return false;
@@ -38,10 +38,13 @@ public class MinionAttackState : MinionBaseState
     }
     private void AttackPlayer(MinionStateManager minion) {
         // minion.player.GetComponent<PlayerHealth>()
-        minion.agent.SetDestination(minion.transform.position);
-        minion.animator.SetBool("CanAttack", false);
-        minion.animator.SetBool("isAttacking", true);
-        minion.player.GetComponent<Player>().DecreaseHealth(100, minion);
-        Debug.Log("Player killed");
+        if (Vector3.Distance(minion.player.transform.position, minion.transform.position) <= 2.0f) {
+            minion.agent.SetDestination(minion.transform.position);
+            minion.animator.SetBool("CanAttack", false);
+            minion.animator.SetBool("Attacking", true);
+            minion.player.GetComponent<Player>().DecreaseHealth(2, minion);
+            Debug.Log("Player killed");
+        }
+       
     }
 }

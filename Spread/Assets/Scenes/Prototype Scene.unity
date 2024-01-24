@@ -214,6 +214,7 @@ MonoBehaviour:
   player: {fileID: 1559479427}
   clone: {fileID: 121128047}
   animator: {fileID: 121128052}
+  sourcePoint: {fileID: 0}
 --- !u!82 &121128060
 AudioSource:
   m_ObjectHideFlags: 0
@@ -229,7 +230,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0.581
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

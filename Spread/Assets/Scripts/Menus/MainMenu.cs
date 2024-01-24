@@ -9,6 +9,11 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip[] audioClips;
 
+    void Start()
+    {
+        Cursor.visible = true;
+    }
+
     public void PlayGame()
     {
         // Load the next scene in the build index
@@ -21,7 +26,7 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Quit");
         Application.Quit();
     }
-
+    
     public void PlayHoverSound()
     {
         Debug.Log("Hovering and played sound");

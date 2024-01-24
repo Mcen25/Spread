@@ -15,11 +15,13 @@ public class MouseLook : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        slider.onValueChanged.AddListener(AdjustSpeed);
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(mouseSensitivity);
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 

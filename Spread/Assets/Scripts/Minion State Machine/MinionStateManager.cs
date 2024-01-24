@@ -10,6 +10,7 @@ public class MinionStateManager : MonoBehaviour
     public MinionChaseState ChaseState = new MinionChaseState();
     public MinionAttackState AttackState = new MinionAttackState();
     public MinionConsumeState ConsumeState = new MinionConsumeState();
+    public MinionSplitState SplitState = new MinionSplitState();
     
     // public Collision collision;
     public GameObject[] targets;
@@ -19,6 +20,7 @@ public class MinionStateManager : MonoBehaviour
     public AudioClip[] audioClips;
 
     public GameObject player;
+    public GameObject clone;
 
     public Animator animator;
     void Awake() {
@@ -62,5 +64,15 @@ public class MinionStateManager : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void SpawnMinion(MinionStateManager minion, GameObject clone) {
+        Vector3 spawnPosition = minion.transform.position + minion.transform.forward * 1.2f; 
+        Instantiate(clone, spawnPosition, Quaternion.identity);
+        minion.SwitchState(minion.IdleState);
+    }
+
+    public void EndBirthAnimation() {
+        animator.SetBool("Splitting", false);
     }
 }

@@ -14,7 +14,11 @@ public class MinionConsumeState : MinionBaseState
         minion.animator.SetBool("isWalking", false);
         minion.animator.SetBool("isEating", true);
 
-        minion.StartCoroutine(DeactivateFoodAfterDelay(minion));
+        if (minion.IsEnemyClose(minion, minion.player)) {
+            minion.SwitchState(minion.AttackState);
+        } else {
+            minion.StartCoroutine(DeactivateFoodAfterDelay(minion));   
+        }
     }
 
     public override void UpdateState(MinionStateManager minion)
@@ -36,7 +40,7 @@ public class MinionConsumeState : MinionBaseState
         GameObject closestFood = FindClosestTarget(minion);
         closestFood.SetActive(false);
         minion.animator.SetBool("isEating", false);
-        minion.SwitchState(minion.IdleState);
+        minion.SwitchState(minion.SplitState);
 
     }
 

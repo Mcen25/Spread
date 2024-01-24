@@ -12,12 +12,13 @@ public class Player : MonoBehaviour
     {    
         player = GameObject.FindWithTag("Player");
     }
-    public void DecreaseHealth(int amount) {
+    public void DecreaseHealth(int amount, MinionStateManager minion) {
         Debug.Log("Player Health: " + health);
         health -= amount;
         if (health <= 0) {
             Debug.Log("Player killed");
             canvas.enabled = true;
+            minion.animator.SetBool("isAttacking", false);
         }
     }
 }

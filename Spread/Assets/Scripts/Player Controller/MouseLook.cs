@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MouseLook : MonoBehaviour
 {
+    public Slider slider;
     public float mouseSensitivity = 100f;
 
     public Transform playerBody;
@@ -26,5 +28,9 @@ public class MouseLook : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         playerBody.Rotate(Vector3.up * mouseX);
+    }
+
+    public void AdjustSpeed (float newSpeed) {
+        mouseSensitivity = newSpeed * 10;
     }
 }

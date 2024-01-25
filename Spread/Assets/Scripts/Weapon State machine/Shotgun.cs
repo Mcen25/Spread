@@ -20,8 +20,8 @@ public class Shotgun : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && ammo > 0) {
             animator.SetBool("ShootCockTwice", true);
             Debug.Log(ammo);
-        } else {
-
+        } else if (Input.GetButtonDown("Fire1") && ammo == 0) {
+            EmptyAudio();
         }
 
         if (Input.GetKeyDown(KeyCode.R))

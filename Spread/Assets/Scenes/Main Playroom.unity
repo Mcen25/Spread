@@ -6480,7 +6480,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4894965941807003096}
-  m_LocalEulerAnglesHint: {x: -37.761276, y: -50.768414, z: 108.43487}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &989265383130379891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6587,7 +6587,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4894965941807003096}
-  m_LocalEulerAnglesHint: {x: -37.761276, y: -50.768414, z: 108.43487}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1779664654113418048
 Transform:
   m_ObjectHideFlags: 0
@@ -6809,7 +6809,7 @@ Transform:
   - {fileID: 1055801897780911699}
   - {fileID: 1779664654113418048}
   m_Father: {fileID: 6261096927283138867}
-  m_LocalEulerAnglesHint: {x: -6.0644736, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.00000047683716, y: 0, z: 0}
 --- !u!33 &4978826338209227587
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -7046,6 +7046,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 57e25295f496c4f3c97612875e6762b2, type: 3}
   - {fileID: 8300000, guid: 6b67644ae353a407095c381b040bb2fc, type: 3}
   - {fileID: 8300000, guid: 65abbedec8ffb40aea127009307fe16d, type: 3}
+  - {fileID: 8300000, guid: ffcd75c63a9404adeb830f95c48d4700, type: 3}
   audioSource: {fileID: 6748699940977904524}
   fpsCam: {fileID: 3617993714717263132}
   muzzleFlash: {fileID: 2063234060}

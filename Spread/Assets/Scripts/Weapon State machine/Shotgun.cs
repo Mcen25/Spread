@@ -1,75 +1,59 @@
+using System;
 using UnityEngine;
 
 public class Shotgun : MonoBehaviour
 {
-    // Start is called before the first frame update
     private int ammo = 5;
-
     int reloadCount = 0;
-
     [SerializeField] private Animator animator;
     [SerializeField] private AudioClip[] audioClips;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Camera fpsCam;
 
+    public ParticleSystem muzzleFlash;
     public float damage = 10f;
     public float range = 100f;
-
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-
         if (Input.GetButtonDown("Fire1") && ammo > 0) {
-            Debug.Log("Shoot");
-            animator.SetBool("Shoot", true);
+            animator.SetBool("ShootCockTwice", true);
             Debug.Log(ammo);
-        } 
-        
-        if (Input.GetButtonDown("Fire1") && ammo == 0) {
-            Debug.Log("Last Shot");
-            Debug.Log(ammo);
-            animator.SetBool("Shoot", true);
-            animator.SetBool("StayBack", true);
+        } else {
+
         }
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            if (ammo <= 5) {
-                if (animator.GetBool("StayBack") == true) {
-                    animator.SetBool("StayBack", false);
-                    animator.SetBool("Reload", true);
-                }
+            Debug.Log("Regular Reload");
+            animator.SetBool("ReloadWhileNotBack", true);
 
-                if (animator.GetBool("StayBack") == false) {
-                    animator.SetBool("Reload", true);
-                }
-            }
-        }    
+        }
     }
 
-    public void EndAnimation()
-    {
-        reloadCount++;
-        if (reloadCount == 5) {
-            animator.SetBool("Reload", false);
-            animator.SetBool("ReloadLastShot", false);
-            reloadCount = 0;
-        }
+
+    public void EndRegularReload() {
+        animator.SetBool("ReloadWhileNotBack", false);
         ammo++;
+        if (ammo < 5)
+        {
+            animator.SetBool("Reload", true);
+        }
+        else
+        {
+            animator.SetBool("Reload", false);
+            animator.SetBool("CockBack", true);
+        }
     }
 
     public void EndShootAnimation() {
-        animator.SetBool("Shoot", false);
+        animator.SetBool("ShootCockTwice", false);
         ammo--;
     }
 
     public void EndLastShotAnimation() {
-        animator.SetBool("LastShot", false);
+        animator.SetBool("ShootCockOnly", false);
         animator.SetBool("StayBack", true);
         ammo--;
     }
@@ -79,10 +63,38 @@ public class Shotgun : MonoBehaviour
         audioSource.Play();
     }
 
+    public void PlayReloadAudio() {
+        audioSource.clip = audioClips[1];
+        audioSource.Play();
+    }
+
+    public void CockBackAudio() {
+        audioSource.clip = audioClips[2];
+        audioSource.Play();
+    }
+
+    public void CockBackAndForthAudio() {
+        audioSource.clip = audioClips[3];
+        audioSource.Play();
+    }
+
+    private void EmptyAudio() {
+        audioSource.clip = audioClips[4];
+        audioSource.Play();
+    }
+
     private void Shoot() {
+
+        muzzleFlash.Play();
+
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range)) {
             Debug.Log(hit.transform.name);
+
+            MinionStateManager minion = hit.transform.GetComponent<MinionStateManager>();
+            if (minion != null) {
+                minion.DecreaseHealth(damage);
+            }
         }
     }
 

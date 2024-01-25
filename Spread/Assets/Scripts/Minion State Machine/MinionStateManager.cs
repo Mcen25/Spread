@@ -30,6 +30,9 @@ public class MinionStateManager : MonoBehaviour
 
     public GameObject sourcePoint;
 
+    private float health = 20.0f;
+
+
     void Awake() {
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
@@ -81,5 +84,12 @@ public class MinionStateManager : MonoBehaviour
 
     public void EndBirthAnimation() {
         animator.SetBool("Splitting", false);
+    }
+
+    public void DecreaseHealth(float damage) {
+        health -= damage;
+        if (health <= 0) {
+            Destroy(gameObject);
+        }
     }
 }

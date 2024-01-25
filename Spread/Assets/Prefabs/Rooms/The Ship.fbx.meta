@@ -1,29 +1,9 @@
 fileFormatVersion: 2
-guid: a7ae9adb063c09648918cc5fee4ff6c1
+guid: 09c8a7f82f59149d89682d9e88d3335e
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: AnatomyHandHumanMale_standardSurface2
-    second: {fileID: 2100000, guid: 974a4096d11c544889a230f151dc5781, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material1
-    second: {fileID: 2100000, guid: b4a640f2803c94d5aa228913f7801755, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Sawed
-    second: {fileID: 2100000, guid: bbeb386c97e664507a2938a0fdd04285, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: standardSurface1
-    second: {fileID: 2100000, guid: 1facedcb9b1804855af37f93314031e8, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

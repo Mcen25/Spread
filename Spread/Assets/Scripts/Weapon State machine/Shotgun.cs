@@ -18,6 +18,7 @@ public class Shotgun : MonoBehaviour
     void Update()
     {
         if (Input.GetButtonDown("Fire1") && ammo > 0) {
+            animator.SetBool("CockBack", false);
             animator.SetBool("ShootCockTwice", true);
             Debug.Log(ammo);
         } else if (Input.GetButtonDown("Fire1") && ammo == 0) {
@@ -26,7 +27,7 @@ public class Shotgun : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            Debug.Log("Regular Reload");
+            // Debug.Log("Regular Reload");
             animator.SetBool("ReloadWhileNotBack", true);
 
         }
@@ -34,17 +35,20 @@ public class Shotgun : MonoBehaviour
 
 
     public void EndRegularReload() {
-        animator.SetBool("ReloadWhileNotBack", false);
-        ammo++;
-        if (ammo < 5)
-        {
+
+        if (ammo < 5) {
+            animator.SetBool("CockBack", false);
             animator.SetBool("Reload", true);
-        }
-        else
-        {
-            animator.SetBool("Reload", false);
+            ammo++;
+        } 
+        
+        if (ammo >= 4) {
+            animator.SetBool("Reload", false); 
             animator.SetBool("CockBack", true);
         }
+        Debug.Log(ammo);
+        
+        animator.SetBool("ReloadWhileNotBack", false);
     }
 
     public void EndShootAnimation() {
@@ -56,6 +60,10 @@ public class Shotgun : MonoBehaviour
         animator.SetBool("ShootCockOnly", false);
         animator.SetBool("StayBack", true);
         ammo--;
+    }
+
+    public void EndCockBack() {
+        animator.SetBool("CockBack", false);
     }
 
     public void PlayShotAudio() {

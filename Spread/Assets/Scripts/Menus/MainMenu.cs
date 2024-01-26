@@ -22,7 +22,10 @@ public class MainMenu : MonoBehaviour
     {
         // Load the next scene in the build index
         // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        mainMenu.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
         SceneManager.LoadScene("Main Playroom");
+
     }
 
     public void QuitGame()

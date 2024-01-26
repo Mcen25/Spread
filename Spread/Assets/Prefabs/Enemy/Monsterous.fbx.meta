@@ -3,7 +3,22 @@ guid: c6482cb38ec146a468a8240626af411e
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EyesGlow
+    second: {fileID: 2100000, guid: 2350f44af10334973a3565f1269acab1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MonsterSkin
+    second: {fileID: 2100000, guid: 0edd8293c43d44478bb9432d97f849bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TeethWhite
+    second: {fileID: 2100000, guid: cc410bc8ea3314fbeb47ed4ba2fccdce, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

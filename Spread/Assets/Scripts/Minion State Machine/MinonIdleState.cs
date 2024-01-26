@@ -16,10 +16,11 @@ public class MinionIdleState : MinionBaseState
             minion.SwitchState(minion.AttackState);
         } else if (minion.CheckFoodActivity() != false) {
             minion.SwitchState(minion.ChaseState);
-        } else if (minion.CheckFoodActivity() == false) {
-
         }
 
+        if (minion.CheckFoodActivity() == false) {
+            minion.SwitchState(minion.CombineState);
+        }
     }
 
     public override void OnCollisionEnter(MinionStateManager minion, Collision collision)

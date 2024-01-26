@@ -30,6 +30,8 @@ public class MinionStateManager : MonoBehaviour
 
     public GameObject sourcePoint;
 
+    public GameObject boss;
+
     private float health = 20.0f;
 
 

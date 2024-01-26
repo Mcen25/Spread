@@ -24,13 +24,12 @@ public class MinionConsumeState : MinionBaseState
     public override void UpdateState(MinionStateManager minion)
     {
         
-        if (minion.IsEnemyClose(minion, minion.player)) {
+
+         if (minion.CheckFoodActivity() == false) {
+            minion.SwitchState(minion.CombineState);
+        } else if (minion.IsEnemyClose(minion, minion.player)) {
             minion.SwitchState(minion.AttackState);
         }
-        
-        // if (FindClosestTarget(minion).activeSelf == false) {
-        //     minion.SwitchState(minion.IdleState);
-        // }
     }
 
     public override void OnCollisionEnter(MinionStateManager minion, Collision collision)

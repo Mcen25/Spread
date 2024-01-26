@@ -18,18 +18,24 @@ public class MinionChaseState : MinionBaseState
     public override void UpdateState(MinionStateManager minion)
     {
 
+        if (minion.CheckFoodActivity() == false) {
+            minion.SwitchState(minion.CombineState);
+        } else {
+            minion.agent.SetDestination(FindClosestTarget(minion).transform.position);
+        }
         if (minion.IsEnemyClose(minion, minion.player)) {
             minion.SwitchState(minion.AttackState);
         } 
 
-        minion.agent.SetDestination(FindClosestTarget(minion).transform.position);
+        
 
         if (FindClosestTarget(minion).activeSelf == true && Vector3.Distance(FindClosestTarget(minion).transform.position, minion.transform.position) < distance)
         {
             minion.audioSource.Stop();
             minion.SwitchState(minion.ConsumeState);
         } 
-         
+        
+      
     }
 
     public override void OnCollisionEnter(MinionStateManager minion, Collision collision)
@@ -48,12 +54,33 @@ public class MinionChaseState : MinionBaseState
                 float distanceToTarget = Vector3.Distance(target.transform.position, minion.transform.position);
                 if (distanceToTarget < closestDistance)
                 {
-                    closestDistance = distanceToTarget;
-                    closestTarget = target;
+                    if (NumberOfMinionsNearFood(target, minion) <= 3) {
+                        closestDistance = distanceToTarget;
+                        closestTarget = target;
+                    } else {
+                        continue;
+                    }
                 }
             } 
         }
 
         return closestTarget;
+    }
+
+    private int NumberOfMinionsNearFood(GameObject food, MinionStateManager minion) {
+        int count = 0;
+        int distanceFromFood = 6;
+
+        Collider[] colliders = Physics.OverlapSphere(food.transform.position, distanceFromFood);
+        foreach (Collider collider in colliders)
+        {
+            MinionStateManager otherMinion = collider.GetComponent<MinionStateManager>();
+            if (otherMinion != minion)
+            {
+                count++;
+            }
+        }
+
+        return count;
     }
 }

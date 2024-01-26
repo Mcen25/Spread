@@ -28,6 +28,7 @@ public class Shotgun : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             // Debug.Log("Regular Reload");
+            animator.SetBool("ShootCockTwice", false);
             animator.SetBool("ReloadWhileNotBack", true);
 
         }

@@ -21,4 +21,14 @@ public class Player : MonoBehaviour
             minion.animator.SetBool("Attacking", false);
         }
     }
+
+    public void DeathByBoss(int amount, BossStateManager minion) {
+        Debug.Log("Player Health: " + health);
+        health -= amount;
+        if (health <= 0) {
+            Debug.Log("Player killed");
+            canvas.enabled = true;
+            minion.animator.SetBool("Punching", false);
+        }
+    }
 }

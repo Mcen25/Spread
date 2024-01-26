@@ -29,13 +29,14 @@ public class MinionAttackState : MinionBaseState
         Debug.Log("Colliding in Attack State");
     }
 
-    private bool WithinRange(MinionStateManager minion) {
-        if (Vector3.Distance(minion.player.transform.position, minion.transform.position) <= 7.0f) {
+     private bool WithinRange(MinionStateManager minion) {
+        if (Vector3.Distance(minion.player.transform.position, minion.transform.position) <= 10.0f) {
             return true;
         } else {
             return false;
         }
     }
+
     private void AttackPlayer(MinionStateManager minion) {
         // minion.player.GetComponent<PlayerHealth>()
         if (Vector3.Distance(minion.player.transform.position, minion.transform.position) <= 2.0f) {
@@ -44,6 +45,10 @@ public class MinionAttackState : MinionBaseState
             minion.animator.SetBool("Attacking", true);
             minion.player.GetComponent<Player>().DecreaseHealth(2, minion);
             Debug.Log("Player killed");
+        } else {
+            minion.agent.SetDestination(minion.player.transform.position);
+            minion.animator.SetBool("CanAttack", true);
+            minion.animator.SetBool("Attacking", false);
         }
        
     }

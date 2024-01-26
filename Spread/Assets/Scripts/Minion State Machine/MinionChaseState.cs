@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MinionChaseState : MinionBaseState
 {
-    private float distance = 3.0f;
+    private float distance = 5.0f;
     public override void EnterState(MinionStateManager minion)
     {
         Debug.Log("Entering Chase State");
@@ -13,11 +13,6 @@ public class MinionChaseState : MinionBaseState
         minion.audioSource.Play();
         minion.animator.SetBool("IsWalking", true);
        
-        GameObject closestTarget = FindClosestTarget(minion);
-        if (closestTarget != null)
-        {
-            minion.agent.SetDestination(closestTarget.transform.position);
-        }
     }
 
     public override void UpdateState(MinionStateManager minion)
@@ -25,15 +20,15 @@ public class MinionChaseState : MinionBaseState
 
         if (minion.IsEnemyClose(minion, minion.player)) {
             minion.SwitchState(minion.AttackState);
-        } else {
-            GameObject closestTarget = FindClosestTarget(minion);
-            if (closestTarget != null && Vector3.Distance(closestTarget.transform.position, minion.transform.position) < distance)
-            {
-                minion.audioSource.Stop();
-                minion.SwitchState(minion.ConsumeState);
-            }    
-        }
-        
+        } 
+
+        minion.agent.SetDestination(FindClosestTarget(minion).transform.position);
+
+        if (FindClosestTarget(minion).activeSelf == true && Vector3.Distance(FindClosestTarget(minion).transform.position, minion.transform.position) < distance)
+        {
+            minion.audioSource.Stop();
+            minion.SwitchState(minion.ConsumeState);
+        } 
          
     }
 
@@ -49,12 +44,14 @@ public class MinionChaseState : MinionBaseState
 
         foreach (GameObject target in targets)
         {
-            float distanceToTarget = Vector3.Distance(target.transform.position, minion.transform.position);
-            if (distanceToTarget < closestDistance)
-            {
-                closestDistance = distanceToTarget;
-                closestTarget = target;
-            }
+            if (target.activeSelf == true) {
+                float distanceToTarget = Vector3.Distance(target.transform.position, minion.transform.position);
+                if (distanceToTarget < closestDistance)
+                {
+                    closestDistance = distanceToTarget;
+                    closestTarget = target;
+                }
+            } 
         }
 
         return closestTarget;

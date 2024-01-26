@@ -8,11 +8,11 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip[] audioClips;
-    public Canvas canvas;
+    public GameObject mainMenu;
 
     void Update()
     {
-        if (canvas.enabled)
+        if (mainMenu.activeSelf)
         {
             Cursor.lockState = CursorLockMode.None;
             PlayGameSound();
@@ -21,7 +21,8 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         // Load the next scene in the build index
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Main Playroom");
     }
 
     public void QuitGame()

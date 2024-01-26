@@ -15,7 +15,11 @@ public class PauseMenu : MonoBehaviour
             } else {
                 Pause();
             }
-        } 
+        }
+        if (gameObject.activeSelf)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     public void Resume() {
@@ -33,7 +37,8 @@ public class PauseMenu : MonoBehaviour
 
     public void ReturnToMain() {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene("Main Menu");
     }
     public void QuitGame() {
         Debug.Log("Quit");

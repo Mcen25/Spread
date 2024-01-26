@@ -1507,7 +1507,8 @@ AudioSource:
   m_GameObject: {fileID: 1893677091}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 1d759fb294ab4a34780982984b221ab3,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 5b59d176d3c5b44108b30671604e98a6, type: 3}
   m_Resource: {fileID: 8300000, guid: 5b59d176d3c5b44108b30671604e98a6, type: 3}
   m_PlayOnAwake: 1
@@ -1664,7 +1665,8 @@ MonoBehaviour:
   audioClips:
   - {fileID: 8300000, guid: b1336efe1a8fc4899b346e965c71ed8c, type: 3}
   - {fileID: 8300000, guid: 6105ceefdce744eb184efe40d12fe473, type: 3}
-  canvas: {fileID: 0}
+  - {fileID: 8300000, guid: 5b59d176d3c5b44108b30671604e98a6, type: 3}
+  mainMenu: {fileID: 1956068340}
 --- !u!82 &1956068343
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1674,7 +1676,8 @@ AudioSource:
   m_GameObject: {fileID: 1956068340}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 1d759fb294ab4a34780982984b221ab3,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
@@ -2159,6 +2162,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6753054742023882977, guid: e270c8dc956b59c4aa7eae4e63b15770,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 1d759fb294ab4a34780982984b221ab3,
+        type: 2}
     - target: {fileID: 7584093683068235250, guid: e270c8dc956b59c4aa7eae4e63b15770,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

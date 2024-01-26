@@ -1664,6 +1664,7 @@ MonoBehaviour:
   audioClips:
   - {fileID: 8300000, guid: b1336efe1a8fc4899b346e965c71ed8c, type: 3}
   - {fileID: 8300000, guid: 6105ceefdce744eb184efe40d12fe473, type: 3}
+  canvas: {fileID: 0}
 --- !u!82 &1956068343
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2163,11 +2164,48 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1956068340}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8444019320178340610, guid: e270c8dc956b59c4aa7eae4e63b15770, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6979089379820368125, guid: e270c8dc956b59c4aa7eae4e63b15770,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5149770880266666595}
   m_SourcePrefab: {fileID: 100100000, guid: e270c8dc956b59c4aa7eae4e63b15770, type: 3}
+--- !u!1 &5149770880266666593 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6979089379820368125, guid: e270c8dc956b59c4aa7eae4e63b15770,
+    type: 3}
+  m_PrefabInstance: {fileID: 5149770880266666592}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5149770880266666594 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4335889709768327383, guid: e270c8dc956b59c4aa7eae4e63b15770,
+    type: 3}
+  m_PrefabInstance: {fileID: 5149770880266666592}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5149770880266666593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5149770880266666595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5149770880266666593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6687b31fee6d9440486e54954b921443, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 5149770880266666594}
+  player: {fileID: 7311401303085895101, guid: 9ee9d4921f7f34d3fa2387d328340380, type: 3}
 --- !u!1001 &5550509569942209850
 PrefabInstance:
   m_ObjectHideFlags: 0

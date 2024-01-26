@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class MouseLook : MonoBehaviour
 {
-    public Slider slider;
     public float mouseSensitivity = 100f;
 
     public Transform playerBody;
@@ -15,7 +14,6 @@ public class MouseLook : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        slider.onValueChanged.AddListener(AdjustSpeed);
     }
 
     // Update is called once per frame

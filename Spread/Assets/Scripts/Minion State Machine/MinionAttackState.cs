@@ -12,15 +12,27 @@ public class MinionAttackState : MinionBaseState
         minion.animator.SetBool("CanAttack", true);
         minion.animator.SetBool("IsEating", false);
 
-        minion.agent.speed = agentSpeed;
+        minion.agent.speed = 15f;
 
     }
 
     public override void UpdateState(MinionStateManager minion) {
          
-        if (WithinRange(minion)) {
-            AttackPlayer(minion);
+        if (minion.IsEnemyClose(minion, minion.player)) {
+            if (Vector3.Distance(minion.player.transform.position, minion.transform.position) <= 5.0f) {
+                minion.agent.SetDestination(minion.transform.position);
+                minion.animator.SetBool("CanAttack", false);
+                minion.animator.SetBool("Attacking", true);
+                minion.player.GetComponent<Player>().DecreaseHealth(2, minion);
+                Debug.Log("Player killed");
+            } else {
+                minion.agent.SetDestination(minion.player.transform.position);
+                minion.animator.SetBool("CanAttack", true);
+                minion.animator.SetBool("Attacking", false);
+            }
         } else {
+            minion.agent.speed = 5.0f;
+            minion.animator.SetBool("CanAttack", false);
             minion.SwitchState(minion.IdleState);
         }
     }
@@ -29,27 +41,4 @@ public class MinionAttackState : MinionBaseState
         Debug.Log("Colliding in Attack State");
     }
 
-     private bool WithinRange(MinionStateManager minion) {
-        if (Vector3.Distance(minion.player.transform.position, minion.transform.position) <= 10.0f) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private void AttackPlayer(MinionStateManager minion) {
-        // minion.player.GetComponent<PlayerHealth>()
-        if (Vector3.Distance(minion.player.transform.position, minion.transform.position) <= 2.0f) {
-            minion.agent.SetDestination(minion.transform.position);
-            minion.animator.SetBool("CanAttack", false);
-            minion.animator.SetBool("Attacking", true);
-            minion.player.GetComponent<Player>().DecreaseHealth(2, minion);
-            Debug.Log("Player killed");
-        } else {
-            minion.agent.SetDestination(minion.player.transform.position);
-            minion.animator.SetBool("CanAttack", true);
-            minion.animator.SetBool("Attacking", false);
-        }
-       
-    }
 }

@@ -21,6 +21,9 @@ public class BossStateManager : MonoBehaviour
     public GameObject player;
     public GameObject wallPoint;
     public Animator animator;
+
+    public GameObject gameOver;
+    public GameObject youWon;
     private float health = 200.0f;
 
 
@@ -45,7 +48,7 @@ public class BossStateManager : MonoBehaviour
     }
 
     public bool IsEnemyClose(BossStateManager boss, GameObject player) {
-        if (Vector3.Distance(boss.transform.position, boss.player.transform.position) < 4.0f) {
+        if (Vector3.Distance(boss.transform.position, boss.player.transform.position) < 15.0f) {
             return true;
         }
 
@@ -64,10 +67,15 @@ public class BossStateManager : MonoBehaviour
     }
 
     public void DecreaseHealth(float damage) {
-        health -= damage;
-        if (health <= 0) {
-            Destroy(gameObject);
+       
+        if (currentState == SwipeState) {
+             health -= damage;
+            if (health <= 0) {
+                Destroy(gameObject);
+                youWon.SetActive(true);
+            }
         }
+        
     }
 
     public bool CheckMinionStatus() {

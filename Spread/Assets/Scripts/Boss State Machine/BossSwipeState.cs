@@ -16,15 +16,15 @@ public class BossSwipeState : BossBaseState
         if (Vector3.Distance(boss.transform.position, boss.wallPoint.transform.position) < 1f) {
             boss.agent.SetDestination(boss.transform.position);
             boss.animator.SetBool("Swiping", true);
-            EndGameTimer(boss);      
+            boss.StartCoroutine(EndGameTimer(boss));      
         }
 
     }
 
     private IEnumerator EndGameTimer(BossStateManager boss)
     {
-        Debug.Log("Waiting to deactivate food");
         yield return new WaitForSeconds(30f);
+        boss.gameOver.SetActive(true);
 
     }
 

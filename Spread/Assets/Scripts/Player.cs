@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     public int health = 100;
     public GameObject player;
-    [SerializeField] private Canvas canvas;
+    [SerializeField] private GameObject gameOver;
     // Start is called before the first frame update
     void Start()
     {    
@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
         health -= amount;
         if (health <= 0) {
             Debug.Log("Player killed");
-            canvas.enabled = true;
+            gameOver.SetActive(true);
             minion.animator.SetBool("Attacking", false);
         }
     }
@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
         health -= amount;
         if (health <= 0) {
             Debug.Log("Player killed");
-            canvas.enabled = true;
+            gameOver.SetActive(true);
             minion.animator.SetBool("Punching", false);
         }
     }

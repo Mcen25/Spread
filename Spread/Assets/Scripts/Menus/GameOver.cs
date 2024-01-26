@@ -13,6 +13,13 @@ public class GameOver : MonoBehaviour
         Cursor.visible = true;
     }
 
+    void Update() {
+        if (gameObject.activeSelf)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
+
     public void ReturnToMainMenu()
     {
         // Load the next scene in the build index

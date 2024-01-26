@@ -17,24 +17,19 @@ public class MinionChaseState : MinionBaseState
 
     public override void UpdateState(MinionStateManager minion)
     {
-
+        if (minion.IsEnemyClose(minion, minion.player)) {
+            minion.SwitchState(minion.AttackState);
+        } else 
         if (minion.CheckFoodActivity() == false) {
             minion.SwitchState(minion.CombineState);
         } else {
             minion.agent.SetDestination(FindClosestTarget(minion).transform.position);
+             if (FindClosestTarget(minion).activeSelf == true && Vector3.Distance(FindClosestTarget(minion).transform.position, minion.transform.position) < distance)
+            {
+                minion.audioSource.Stop();
+                minion.SwitchState(minion.ConsumeState);
+            } 
         }
-        if (minion.IsEnemyClose(minion, minion.player)) {
-            minion.SwitchState(minion.AttackState);
-        } 
-
-        
-
-        if (FindClosestTarget(minion).activeSelf == true && Vector3.Distance(FindClosestTarget(minion).transform.position, minion.transform.position) < distance)
-        {
-            minion.audioSource.Stop();
-            minion.SwitchState(minion.ConsumeState);
-        } 
-        
       
     }
 

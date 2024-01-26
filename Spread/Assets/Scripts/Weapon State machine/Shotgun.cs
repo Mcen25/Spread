@@ -104,6 +104,11 @@ public class Shotgun : MonoBehaviour
             if (minion != null) {
                 minion.DecreaseHealth(damage);
             }
+
+            BossStateManager boss = hit.transform.GetComponent<BossStateManager>();
+            if (boss != null) {
+                boss.DecreaseHealth(damage);
+            }
         }
     }
 

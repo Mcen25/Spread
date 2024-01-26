@@ -60,10 +60,10 @@ public class MinionStateManager : MonoBehaviour
     }
 
     public bool IsEnemyClose(MinionStateManager minion, GameObject player) {
-        if (Vector3.Distance(minion.transform.position, minion.player.transform.position) < 4.0f) {
+        if (Vector3.Distance(minion.transform.position, minion.player.transform.position) < 15.0f) {
             return true;
         }
-
+        
         return false;
     }
 

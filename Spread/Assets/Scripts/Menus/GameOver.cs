@@ -3,25 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class GameOver : MonoBehaviour
 {
-
-    [SerializeField] private AudioSource audioSource;
+     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip[] audioClips;
-    public Canvas canvas;
 
-    void Update()
+    void Start()
     {
-        if (canvas.enabled)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            PlayGameSound();
-        }
+        Cursor.visible = true;
     }
-    public void PlayGame()
+
+    public void ReturnToMainMenu()
     {
         // Load the next scene in the build index
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+
+    public void Restart() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void QuitGame()
@@ -41,12 +40,6 @@ public class MainMenu : MonoBehaviour
     public void PlayerClickSound()
     {
         audioSource.clip = audioClips[1];
-        audioSource.Play();
-    }
-
-    public void PlayGameSound()
-    {
-        audioSource.clip = audioClips[2];
         audioSource.Play();
     }
 }

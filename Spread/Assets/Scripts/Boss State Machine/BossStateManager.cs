@@ -68,12 +68,13 @@ public class BossStateManager : MonoBehaviour
 
     public void DecreaseHealth(float damage) {
        
-        if (currentState == SwipeState) {
-             health -= damage;
-            if (health <= 0) {
+        health -= damage;
+            
+        
+
+        if (health <= 0) {
                 Destroy(gameObject);
                 youWon.SetActive(true);
-            }
         }
         
     }
@@ -86,6 +87,8 @@ public class BossStateManager : MonoBehaviour
                 return true;
             }
         }
+        
         return false;
+        
     }
 }

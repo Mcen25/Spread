@@ -11,7 +11,7 @@ public class Shotgun : MonoBehaviour
     [SerializeField] private Camera fpsCam;
 
     public ParticleSystem muzzleFlash;
-    public float damage = 10f;
+    public float damage = 15f;
     public float range = 100f;
 
     // Update is called once per frame

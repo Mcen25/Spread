@@ -13,9 +13,9 @@ public class BossAttackState : BossBaseState
     {
 
           if (boss.IsEnemyClose(boss, boss.player)) {
-            if (Vector3.Distance(boss.player.transform.position, boss.transform.position) <= 5.0f) {
+            if (Vector3.Distance(boss.player.transform.position, boss.transform.position) <= 7.0f) {
                 boss.agent.SetDestination(boss.transform.position);
-                boss.player.GetComponent<Player>().DeathByBoss(2, boss);
+                boss.player.GetComponent<Player>().DeathByBoss(20, boss);
                 boss.animator.SetBool("isWalking", false);
                 boss.animator.SetBool("Attacking", true);
                 Debug.Log("Player killed");

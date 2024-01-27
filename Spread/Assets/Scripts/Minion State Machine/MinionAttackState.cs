@@ -23,7 +23,7 @@ public class MinionAttackState : MinionBaseState
                 minion.agent.SetDestination(minion.transform.position);
                 minion.animator.SetBool("CanAttack", false);
                 minion.animator.SetBool("Attacking", true);
-                minion.player.GetComponent<Player>().DecreaseHealth(2, minion);
+                minion.player.GetComponent<Player>().DecreaseHealth(1, minion);
                 Debug.Log("Player killed");
             } else {
                 minion.agent.SetDestination(minion.player.transform.position);

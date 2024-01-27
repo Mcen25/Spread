@@ -839,7 +839,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: They Stalk
+  m_text: It Feeds
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e55aa26a941114230925707c55c9a05a, type: 2}
   m_sharedMaterial: {fileID: 5483208840202055784, guid: e55aa26a941114230925707c55c9a05a,

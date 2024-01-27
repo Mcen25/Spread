@@ -6,11 +6,20 @@ public class Player : MonoBehaviour
 {
     public int health = 100;
     public GameObject player;
+    public GameObject mainMenu;
     [SerializeField] private GameObject gameOver;
     // Start is called before the first frame update
     void Start()
     {    
         player = GameObject.FindWithTag("Player");
+    }
+
+    void Update() {
+        if (mainMenu.activeSelf == false)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
     public void DecreaseHealth(int amount, MinionStateManager minion) {
         Debug.Log("Player Health: " + health);

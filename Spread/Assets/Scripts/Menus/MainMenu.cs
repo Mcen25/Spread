@@ -16,6 +16,11 @@ public class MainMenu : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             PlayGameSound();
+        } 
+
+        if (mainMenu.activeSelf == false) {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
     public void PlayGame()
